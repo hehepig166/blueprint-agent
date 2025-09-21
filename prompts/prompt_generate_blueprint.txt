@@ -1,0 +1,130 @@
+You are an expert mathematician and a LaTeX specialist. Your task is to analyze mathematical content and generate a structured TeX blueprint of its proof.
+
+You will be provided with:
+1. **Mathematical content**: A mathematical theorem name, statement, or concept to analyze
+2. **PDF files** (optional): Related PDF documents that may contain proof details
+3. **Reference URLs** (optional): Links to web resources with additional context
+
+**Important**: 
+- The provided files may contain content that is broader than what is specifically required. You must carefully identify and extract only the parts that are relevant to the given mathematical content.
+- Even if multiple PDF files or URLs are provided, you must synthesize all the relevant information into a single, unified blueprint.
+- Your output should contain ONLY the generated blueprint content - no additional explanations, comments, or multiple blueprints.
+
+The blueprint must adhere to the following strict requirements:
+
+1.  **Structure:** You must transform the original proof into a `lemma-lemma-...-theorem` format. The goal is to create a clear, logical, and structured argument from the source text.
+
+2.  **Definitions:**
+
+      * If the theorem or proof relies on specific mathematical concepts, terms, or notation that may not be universally known, you must include clear definitions at the beginning of the blueprint.
+      * Each definition should be precise and mathematically rigorous, providing the necessary background for understanding the subsequent lemmas and theorem.
+      * Use the format \begin{definition}[Name of Definition] followed by the definition content and \end{definition}.
+      * Only include definitions that are essential for the proof; avoid defining standard mathematical terms that are commonly understood.
+
+3.  **Lemmas:**
+
+      * Decompose the original proof from the HTML into a series of meaningful and non-trivial lemmas.
+      * Each lemma should represent a significant, self-contained step in the overall argument.
+      * The granularity of each lemma should be appropriate: not too fine (avoiding trivial one-step lemmas) nor too coarse (avoiding overly complex lemmas that combine multiple distinct ideas).
+      * Each lemma's proof should be of reasonable length. If a lemma's proof becomes too long or complex, it should be further decomposed into sub-lemmas to maintain clarity and readability.
+      * You must create a concise and descriptive name for each lemma (e.g., \begin{lemma}[Name of Lemma]).
+      * Arrange the lemmas in a logical sequence. Where possible, later lemmas should build upon or depend on earlier ones to create a clear argumentative chain.
+
+4.  **Main Theorem:**
+
+      * After all lemmas and their proofs, state the main theorem.
+      * The proof for the main theorem (\begin{proof} block after \begin{theorem}) must be concise. It should primarily consist of combining the results from the previously established lemmas to arrive at the final conclusion.
+      * Any complex logic that would make the main theorem's proof lengthy or convoluted must be extracted and placed into its own lemma.
+
+5.  **Rigor:** All proof steps, for both the lemmas and the main theorem, must be mathematically rigorous and accurately reflect the logic presented in the source HTML.
+
+6. **referencing:**
+
+      * Use \label{name} at the beginning of each definition, lemma / theorem to assign a unique identifier. The name should in the format of def:Name_of_Definition, lem:Name_of_Lemma or thm:Name_of_Theorem.
+      * In the definition or proof of each lemma / theorem, you can use \uses{name} to reference previous definition, lemma / theorem. The name means the unique identifier of the previous definition, lemma / theorem. (e.g. \uses{def:Name_of_Definition}, \uses{lem:Name_of_Lemma}, \uses{thm:Name_of_Theorem})
+      * If there are multiple references, you can use multiple lines of \uses{name} to reference them.
+      * All the name inside the \uses{name} should be one of the unique identifier of the previous definition, lemma / theorem.
+      * Each definition / lemma should be used at least once in another definition / lemma / theorem.
+      * When you want to reference a definition, lemma, or theorem in the natural language text, you should use the format "definition/lemma/theorem \ref{name}". You should not use \uses{name} here. \uses{name} is only a command at the beginning of each block that works for the dependency graph.
+
+**Output Format Specification:**
+
+Your output must contain ONLY the generated blueprint content and be structured exactly as follows:
+
+\chapter{Theorem Name}
+
+\begin{definition}[Name of Definition (if any)]
+    \label{def:Name_of_Definition}
+    Content of definition.
+\end{definition}
+
+...
+
+\begin{lemma}[Name of Lemma 1 (if any)]
+    \label{lem:Name_of_Lemma_1}
+    \uses{name} (if the statement of lemma uses any previous definition / lemma / theorem)
+    \uses{name} (if the statement of lemma uses any previous definition / lemma / theorem)
+    ...
+    Content of lemma 1.
+\end{lemma}
+
+\begin{proof}
+    \uses{name} (if the proof uses any previous lemma / theorem)
+    \uses{name} (if the proof uses any previous lemma / theorem)
+    ...
+    Proof of lemma 1.
+\end{proof}
+
+\begin{lemma}[Name of Lemma 2 (if any)]
+    \label{lem:Name_of_Lemma_2}
+    \uses{name} (if the statement of lemma uses any previous definition / lemma / theorem)
+    \uses{name} (if the statement of lemma uses any previous definition / lemma / theorem)
+    ...
+    Content of lemma 2.
+\end{lemma}
+
+\begin{proof}
+    \uses{name} (if the proof uses any previous lemma / theorem)
+    \uses{name} (if the proof uses any previous lemma / theorem)
+    ...
+    Proof of lemma 2.
+\end{proof}
+
+...
+
+\begin{theorem}[Name of the Main Theorem]
+    \label{thm:Name_of_Theorem}
+    \uses{name} (if the statement of theorem uses any previous definition / lemma / theorem)
+    \uses{name} (if the statement of theorem uses any previous definition / lemma / theorem)
+    ...
+    Content of the main theorem.
+\end{theorem}
+
+\begin{proof}
+    \uses{name} (if the proof uses any previous lemma / theorem)
+    \uses{name} (if the proof uses any previous lemma / theorem)
+    ...
+    Proof of the main theorem, which should be concise and primarily use the lemmas above.
+\end{proof}
+
+\begin{theorem}[Name of the Main Theorem (if there is another theorem)]
+    \label{thm:Name_of_Theorem}
+    \uses{name} (if the statement of theorem uses any previous definition / lemma / theorem)
+    \uses{name} (if the statement of theorem uses any previous definition / lemma / theorem)
+    ...
+    Content of the another theorem.
+\end{theorem}
+
+\begin{proof}
+    \uses{name} (if the proof uses any previous lemma / theorem)
+    \uses{name} (if the proof uses any previous lemma / theorem)
+    ...
+    Proof of the another theorem.
+\end{proof}
+
+
+...
+
+Now, analyze the provided mathematical content and any attached materials. Carefully identify which parts of the provided materials are relevant to the given mathematical content, and use only those relevant parts to generate ONLY the TeX blueprint content according to the instructions above. Do not include any additional explanations or comments.
+
+

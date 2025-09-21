@@ -1,0 +1,65 @@
+You are an expert mathematician and proof analyst. Based on our conversation, I need you to analyze the mathematical theorem proof blueprint we've been discussing and identify any non-trivial statements or steps that are used in the proofs but are not explicitly stated as lemmas or theorems in the blueprint.
+
+**What I need you to do:**
+
+For each lemma and theorem in the blueprint we've been working on, please carefully examine their proofs to identify:
+
+1. **Non-trivial mathematical statements** that are used in the proof but are not explicitly stated as lemmas or theorems in the blueprint
+2. **Well-known theorems or results** that are implicitly used without being formally stated
+3. **Significant logical steps** that rely on mathematical facts not present in the blueprint
+4. **Implicit assumptions** or intermediate results that should be made explicit
+
+**Please keep in mind:**
+
+- Focus on **non-trivial** statements that require mathematical justification
+- Ignore basic arithmetic, algebraic manipulations, or obvious logical steps
+- Look for statements that would typically require their own proof or reference to established theorems
+- Consider both explicit statements and implicit mathematical facts used in the reasoning
+- **Use LaTeX formatting**: Keep all mathematical notation, symbols, and formatting exactly as they appear in the original blueprint
+- **Maintain exact correspondence**: The `proof_fragment` must be an exact copy of the relevant text from the original LaTeX source
+- **Select at most 3 statements**: Choose the most important and non-trivial statements, limiting to a maximum of 3
+
+**Please format your response as follows:**
+
+For each lemma/theorem that contains missing non-trivial statements, please provide:
+
+<blueprint_label>label</blueprint_label>
+
+  <proof_fragment>exact text fragment from the proof</proof_fragment>
+  <extracted_lemma>self-contained lemma statement in natural language</extracted_lemma>
+
+  <proof_fragment>exact text fragment from the proof</proof_fragment>
+  <extracted_lemma>self-contained lemma statement in natural language</extracted_lemma>
+
+  ...
+
+<blueprint_label>label</blueprint_label>
+
+  <proof_fragment>exact text fragment from the proof</proof_fragment>
+  <extracted_lemma>self-contained lemma statement in natural language</extracted_lemma>
+
+  <proof_fragment>exact text fragment from the proof</proof_fragment>
+  <extracted_lemma>self-contained lemma statement in natural language</extracted_lemma>
+
+  ...
+
+...
+
+Where:
+- `<blueprint_label>` is the label of the lemma/theorem being analyzed (e.g., `lem:Name_of_Lemma` or `thm:Name_of_Theorem`)
+- `<proof_fragment>` contains the exact text fragment from the proof that uses the missing non-trivial statement (use original LaTeX formatting)
+- `<extracted_lemma>` contains a self-contained lemma statement using LaTeX formatting that includes:
+  - Clear conditions/settings (hypotheses) in proper mathematical notation
+  - Precise conclusion (goal) using LaTeX formatting
+  - Mathematical rigor appropriate for a formal lemma
+
+**Example:**
+
+<blueprint_label>lem:Convergence_of_Sequence</blueprint_label>
+
+  <proof_fragment>Since the sequence $\{a_n\}$ is bounded and monotonic, it converges to its supremum.</proof_fragment>
+  <extracted_lemma>Let $\{a_n\}$ be a sequence of real numbers. If $\{a_n\}$ is bounded above and monotonically increasing, then $\{a_n\}$ converges to $\sup\{a_n : n \in \mathbb{N}\}$.</extracted_lemma>
+
+
+Now, please analyze the mathematical proof blueprint we've been discussing and identify all missing non-trivial statements:
+

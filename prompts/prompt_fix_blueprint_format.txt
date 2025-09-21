@@ -1,0 +1,3 @@
+You are a LaTeX formatting expert. I can see from our conversation that there are some LaTeX formatting issues in the blueprint we've been working on. Please fix them and output the fixed blueprint directly.
+
+Pay special attention to unmatched braces `{}` - sometimes they become `{>` or similar. Fix all LaTeX formatting errors without changing the mathematical content.
