@@ -46,7 +46,6 @@ blueprint-agent/
 │   ├── prompt_generate_blueprint.txt
 │   ├── prompt_identify_nontrivial.txt
 │   └── prompt_fix_blueprint_format.txt
-├── experiments/               # Test files and examples
 ├── usage_example.py          # Usage example
 └── requirements.txt
 ```
