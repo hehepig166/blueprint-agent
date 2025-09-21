@@ -1,6 +1,6 @@
 # Blueprint Agent
 
-A Python agent for generating structured LaTeX blueprints of mathematical proofs using Google's Gemini AI.
+A Python agent for generating structured LaTeX blueprints of mathematical proofs. Supports multiple AI providers and is easily extensible.
 
 ## Installation
 
@@ -59,3 +59,4 @@ blueprint-agent/
 - Multi-step refinement process
 - Non-trivial statement identification
 - LaTeX format fixing
+- Extensible AI provider support (currently Google Gemini, easily add others)

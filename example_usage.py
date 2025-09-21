@@ -5,7 +5,7 @@ agent = BlueprintGeneratorAgent()
 
 response = agent.generate_blueprint(
     statement = "Lovász local lemma, only this lemma, no other applications",
-    pdf_files = ["../experiments/lovasz.pdf"],
+    pdf_files = ["experiments/lovasz.pdf"],
     reference_urls = ["https://en.wikipedia.org/wiki/Lov%C3%A1sz_local_lemma"],
     refine_times = 2
 )
