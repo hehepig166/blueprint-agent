@@ -26,7 +26,7 @@ def _load_prompt_from_file(filename: str) -> str:
 
 # Load all prompts from text files
 GENERATE_BLUEPRINT = _load_prompt_from_file("prompt_generate_blueprint.txt")
-REFINE_BLUEPRINT = _load_prompt_from_file("prompt_refine_blueprint.txt")
+REFINE_BLUEPRINT = _load_prompt_from_file("prompt_identify_nontrivial.txt")
 FIX_BLUEPRINT_FORMAT = _load_prompt_from_file("prompt_fix_blueprint_format.txt")
 
 # Create a dictionary for easy access
