@@ -9,7 +9,7 @@ import os
 import asyncio
 from datetime import datetime
 from agents import LeanSearchAgent
-from kernel import GeminiProvider
+from kernel import GeminiProvider, OpenAIProvider
 
 
 async def main():
@@ -21,17 +21,19 @@ async def main():
     session_log_file = f"logs/leansearch_session_{session_timestamp}.log"
     print(f"📝 Session logging to: {session_log_file}")
     
-    # Get API key from console input
-    print("🔑 Please enter your Gemini API key:")
-    gemini_api_key = input("API Key: ").strip()
+    # Get API key from environment variable
+    # api_key = os.getenv("GEMINI_API_KEY")
+    api_key = os.getenv("OPENAI_API_KEY")
+    base_url = "https://openrouter.ai/api/v1"
     
-    if not gemini_api_key:
+    if not api_key:
         print("❌ API key cannot be empty")
         return
     
     # Initialize the agent
     print("🚀 Initializing LeanSearchAgent...")
-    llm_provider = GeminiProvider(api_key=gemini_api_key)
+    # llm_provider = GeminiProvider(api_key=api_key)
+    llm_provider = OpenAIProvider(api_key=api_key, base_url=base_url)
     search_agent = LeanSearchAgent(llm_provider=llm_provider)
     
     # Check client status

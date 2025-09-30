@@ -17,7 +17,7 @@ from google.genai import types
 class BlueprintGeneratorAgent(BaseAgent):
     """Agent specialized in generating Lean4 blueprints from mathematical statements."""
     
-    def __init__(self, llm_provider: GeminiProvider = GeminiProvider(), agent_id: str = "BlueprintGenerator"):
+    def __init__(self, llm_provider: GeminiProvider = None, agent_id: str = "BlueprintGenerator"):
         """
         Initialize Blueprint Generator Agent.
         
@@ -25,6 +25,8 @@ class BlueprintGeneratorAgent(BaseAgent):
             llm_provider: LLM provider instance
             agent_id: Unique identifier for the agent
         """
+        if llm_provider is None:
+            llm_provider = GeminiProvider()
         super().__init__(llm_provider=llm_provider, agent_id=agent_id, system_prompt=None)
     
     def generate_original_blueprint(self, 

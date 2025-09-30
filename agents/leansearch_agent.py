@@ -20,7 +20,7 @@ class LeanSearchAgent(BaseAgent):
     """Agent specialized in searching Lean4 mathematical content using Lean Explore."""
     
     def __init__(self, 
-                 llm_provider: GeminiProvider = GeminiProvider(), 
+                 llm_provider: GeminiProvider = None, 
                  agent_id: str = "LeanSearchAgent",
                  lean_api_key: str = None):
         """
@@ -31,6 +31,8 @@ class LeanSearchAgent(BaseAgent):
             agent_id: Unique identifier for the agent
             lean_api_key: Lean Explore API key. If None, will try to load from config
         """
+        if llm_provider is None:
+            llm_provider = GeminiProvider()
         super().__init__(llm_provider=llm_provider, agent_id=agent_id, system_prompt=None)
         
         # Initialize Lean Explore client
