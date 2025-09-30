@@ -28,10 +28,14 @@ def _load_prompt_from_file(filename: str) -> str:
 GENERATE_BLUEPRINT = _load_prompt_from_file("prompt_generate_blueprint.txt")
 REFINE_BLUEPRINT = _load_prompt_from_file("prompt_identify_nontrivial.txt")
 FIX_BLUEPRINT_FORMAT = _load_prompt_from_file("prompt_fix_blueprint_format.txt")
+CREATE_LEANSEARCH_QUERY = _load_prompt_from_file("prompt_create_leansearch_query.txt")
+IDENTIFY_LEANSEARCH_RESULT = _load_prompt_from_file("prompt_identify_leansearch_result.txt")
 
 # Create a dictionary for easy access
 PROMPTS = {
     "generate_blueprint": GENERATE_BLUEPRINT,
+    "create_leansearch_query": CREATE_LEANSEARCH_QUERY,
+    "identify_leansearch_result": IDENTIFY_LEANSEARCH_RESULT,
 }
 
 # Export the main prompts as module attributes
@@ -39,5 +43,7 @@ __all__ = [
     "GENERATE_BLUEPRINT",
     "REFINE_BLUEPRINT",
     "FIX_BLUEPRINT_FORMAT",
+    "CREATE_LEANSEARCH_QUERY",
+    "IDENTIFY_LEANSEARCH_RESULT",
     "PROMPTS"
 ]
