@@ -80,9 +80,7 @@ Each query generates a separate log file with complete search process and analys
 
 ### Required
 - **Gemini API key**: For LLM query generation and result analysis
-
-### Optional
-- **Lean Explore API key**: For actual Lean4 library search (without this, only query generation is tested)
+- **Lean Explore API key**: For actual Lean4 library search (mandatory for full functionality)
 
 ### Setup Lean Explore
 
