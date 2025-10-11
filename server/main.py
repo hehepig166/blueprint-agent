@@ -1,4 +1,5 @@
 # Config must be at the top
+from typing import List
 from config import settings
 
 import asyncio
@@ -32,6 +33,7 @@ async def processor(
     search_agent: LeanSearchAgent,
     q: str,
     limit: int,
+    pkg: List[str] | None,
     generate_query: bool,
     analyze_result: bool,
 ):
@@ -73,7 +75,7 @@ async def processor(
     # Stage2: Perform search for lean explore
     try:
         search_results = await search_agent.search_lean_explore(
-            data["agent_query"], limit
+            data["agent_query"], limit, pkg
         )
         data["search_results"] = [_.model_dump() for _ in search_results]
     except Exception as e:
@@ -121,6 +123,7 @@ async def search(
     limit: int = Query(
         50, ge=1, description="Maximum number of search results to return"
     ),
+    pkg: List[str] | None = Query(None, description="Package filters"),
     generate_query: bool = Query(True, description="Whether to generate a new query"),
     analyze_result: bool = Query(
         True, description="Whether to analyze the lean explore search results"
@@ -128,7 +131,7 @@ async def search(
 ):
     search_agent = LeanSearchAgent(llm_provider)
     return StreamingResponse(
-        processor(search_agent, q, limit, generate_query, analyze_result),
+        processor(search_agent, q, limit, pkg, generate_query, analyze_result),
         media_type="text/event-stream",
     )
 

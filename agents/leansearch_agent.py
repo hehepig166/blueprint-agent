@@ -101,7 +101,7 @@ class LeanSearchAgent(BaseAgent):
         response = self.send_message(analysis_prompt)
         return response
     
-    async def search_lean_explore(self, query: str, limit: int = 50) -> List[Any]:
+    async def search_lean_explore(self, query: str, limit: int = 50, pkg: List[str] | None = None) -> List[Any]:
         """
         Search Lean Explore with the given query.
         
@@ -116,7 +116,7 @@ class LeanSearchAgent(BaseAgent):
             raise RuntimeError("Lean Explore client not available. Please check your API key.")
         
         try:
-            search_response = await self.lean_client.search(query=query)
+            search_response = await self.lean_client.search(query=query, package_filters=pkg)
             return search_response.results[:limit]
         except Exception as e:
             print(f"Error searching Lean Explore: {e}")
